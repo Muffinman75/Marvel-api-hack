@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Marvel Chars!</title>
+	<meta charset="utf-8">
+	<script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Metrophobic" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <link href="index.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<main role="main" class="js-marvel-search-page">
+	  <h1>Enter a Marvel character</h1>
+	  	<form>
+	  		<label for="marvel-search" aria-label="string"></label>
+	  		<input id="marvel-search" type="text" required>
+	  		<button role="button" type="submit">Search</button>
+	  	</form>
+
+	  <div role="alert" class="js-bio-page" aria-live="assertive">
+	   
+	  </div>
+
+	  <h1>Video Result</h1>
+
+	  <div role="alert" class="js-video-page" aria-live="assertive" hidden>
+	   
+	  </div>
+
+	  <h1>Shopping Result</h1>	
+
+	  <div role="alert" class="js-shopping-page" aria-live="assertive" hidden>
+
+	   
+	  </div>	  
+		
+	</main>
+	<script src="index.js" type="text/javascript"></script>
+
+
+</body>
+</html>
