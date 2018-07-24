@@ -11,42 +11,14 @@ const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search?';
 
 const CORS = 'https://cors-anywhere.herokuapp.com/';
 
-let itemNumber = 0;
-
-let resultNumber = 0;
-
 let searchCharacter = null;
 
 let heroIdNum = null;
 
-// $(function(){
-// const marvelAPI = 'https://gateway.marvel.com/v1/public/comics';
-// $.getJSON( marvelAPI, {
-//     apikey: 'c6a0054b9fdccbf11696e79f0e7d1f74'
-//   })
-//     .done(function( response ) {
-//       let results = response.data.results;
-//       let resultsLen = results.length;
-//       let output = '<ul>'; 
-      
-//       for(let i=0; i<resultsLen; i++){
-//         if(results[i].images.length > 0) {
-//           let imgPath = results[i].images[0].path + '/standard_xlarge.' + results[i].images[0].extension;
-//           output += '<li><img src="' + imgPath + '"><br>'+results[i].title+'</li>';
-//         }
-//       }  
-//       output += '</ul>'
-//       $('.js-bio-page').append(output);
-//   });
-   
-// });
 
 function getDataFromMarvelApi(heroIdNum, callback) {
 	const paramsObject = {
-		url: MARVEL_SEARCH_URL,
-		data: {
-			marvelID: heroIdNum 
-    	},
+		url: MARVEL_SEARCH_URL + heroIdNum,
     	success: callback,
     	error: function(error) {
     		console.log(error);
@@ -56,14 +28,6 @@ function getDataFromMarvelApi(heroIdNum, callback) {
 
 	console.log(paramsObject);
 }
-
-// function renderHeroSearchResults(data) {
-// 	console.log(`'renderHeroSearchResults' ran`);
-// 	return`
-// 		<a ${data.results.name}Hero/Villain</a>
-// 		<img src="${data.results.thumbnail}" alt="${data.results.name}">
-// 		`; 	
-// }
 	
 function getDataFromYouTubeApi(inputText, callback) {
 	// Take the value passed from handleSubmit and use 
@@ -127,8 +91,8 @@ function renderHeroBio(item) {
 	// with some biography text
 	console.log(`'renderHeroBio' ran`);
 	return`
-		<h1>Name: ${searchCharacter}</h1>
-		<img src="${item.image}" alt="${searchCharacter}">
+		<h1>Name: ${item.name}</h1>
+		<img src="${item.image}" alt="${item.name}">
 		<h2>Bio: ${item.description}</h2>`;
 }
 
@@ -137,42 +101,22 @@ function renderShoppingSearchResults(item) {
 	// all thumbnails and captions ready to 
 	// inject into the results page div
 	console.log(`'renderShoppingSearchResults' ran`);
-	incrementItemNumber();
-	return`
-		<h4>Item Number${itemNumber}</h4> 
-		<a href="${item.viewItemURL[0]}" target="_blank"><img src=${item.galleryURL[0]}>Small Image</a>
+	return` 
+		<a href="${item.viewItemURL[0]}" target="_blank"><img src=${item.galleryURL[0]}>Click To Purchase</a>
 		`; 
 }
 
-function incrementItemNumber() {
-	itemNumber++;
-}
 
 function renderVideoSearchResults(item) {
 	// Return the template string with
 	// all thumbnails and captions ready to 
 	// inject into the results page div
 	console.log(`'renderVideoSearchResults' ran`);
-	incrementResultNumber();
 	return`
-		<h4>Search result ${resultNumber}</h4>
-		<a href="https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank"><img src=${item.snippet.thumbnails.medium.url}>Medium Image</a>
+		<a href="https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank"><img src=${item.snippet.thumbnails.medium.url}>Click To Learn More!</a>
 		`; 
 }
 
-function incrementResultNumber() {
- 	resultNumber++;
-}
-
-// function displayHeroResultsPage(data) { 
-// 	// Inject the HTML into the results page to 
-// 	// display in the DOM
-// 	const listOfHeroes = data.items.map((item, index) => renderHeroSearchResults(item));
-// 	console.log(listOfVideos);
-// 	console.log(`'displayHeroPage' ran`); 
-// 	$('.js-bio-page').html(listOfHeroes);
-// 	$('.js-bio-page').prop('hidden', false);
-// }
 
 function displayHeroBio(data) {
 	console.log(`'displayHeroBio' ran`);
@@ -215,7 +159,7 @@ function handleBackToHeroScreenClicked() {
 
 function handleHeroClicked(key) {
 	console.log('button click');
-	let searchCharacter = STORE[key];
+	let searchCharacter = STORE[key][0];
 	console.log('searchCharacter', searchCharacter);
 	let heroIdNum = key;
 	console.log('heroIdNum', heroIdNum);
@@ -227,16 +171,26 @@ function handleHeroClicked(key) {
 
 function initialLoadOfHeroLinks() {
 	Object.keys(STORE).forEach(function(key) {
-		//console.log(key);
-		$('.js-choice-page').append(`<button onClick="handleHeroClicked(${key})" role="button" class="heroLink">  ${STORE[key]}  </button>`);
+		console.log(key);
+		$('.js-choice-page').append(`<a onClick="handleHeroClicked(${key})" class="heroLink"><img src="${STORE[key][1]}"></a>`);
 	});
 }
+
+
+// function getImages() {
+// 	Object.keys(STORE).forEach(function(key) {
+// 		let data = $.getJSON(MARVEL_SEARCH_URL + key);
+// 		console.log(data);
+// 		STORE[key].push(data.image);
+// 	}); 
+// }
 
 
 
 
 function handleMarvelApp() {
 	$(initialLoadOfHeroLinks);
+	//$(getImages);
 }
 
 $(handleMarvelApp);

@@ -1,4 +1,4 @@
-* {
+body {
 	box-sizing: border-box;
 }
 
@@ -7,6 +7,12 @@ button {
 }
 
 .js-bio-page img {
-	width: 200px;
-	height: 200px;
+	width: 600px;
+	height: 600px;
+}
+
+.js-choice-page img {
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
 }
