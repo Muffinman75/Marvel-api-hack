@@ -32,6 +32,7 @@ function getDataFromMarvelApi(heroIdNum, callback) {
 	console.log(paramsObject);
 }
 
+
 function getDataFromYouTubeApi(inputText, callback) {
 	// Take the value passed from handleSubmit and use
 	// it to find the data for the videos related to
@@ -111,9 +112,9 @@ function renderShoppingSearchResults(item) {
 	// all thumbnails and captions ready to
 	// inject into the results page div
 	console.log(`'renderShoppingSearchResults' ran`);
-	return`
-		  <a href="${item.viewItemURL[0]}" target="_blank"><img src=${item.galleryURL[0]}>Click To Purchase</a>
-		`;
+	return` 
+		<a href="${item.viewItemURL[0]}" target="_blank"><img src=${item.galleryURL[0]}>Click To Purchase</a>
+		`; 
 }
 
 
@@ -210,6 +211,7 @@ function initialLoadOfHeroLinks() {
 // 		console.log(data);
 // 		STORE[key].push(data.image);
 // 	});
+
 // }
 
 
