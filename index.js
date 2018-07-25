@@ -95,13 +95,13 @@ function renderHeroBio(item) {
 	console.log(`'renderHeroBio' ran`);
 	return`
 		<div class="bioContainer">
-	  	<h1>Name : ${item.name}</h1>
+	  	<h1 aria-label="string">Name : ${item.name}</h1>
 		  <img src="${item.image}" alt="${item.name}">
-		  <h1>history</h1>
-			<h2>${item.description}</h2>
+		  <h1 aria-label="string">history</h1>
+			<h2 aria-label="string">${item.description}</h2>
 			<br>
 			<br>
-			<h2>If there is no history information present or you would like to
+			<h2 aria-label="string">If there is no history information present or you would like to
 			know more about this character, please select a video from below.</h2>
 		</div>	`;
 }
@@ -196,7 +196,7 @@ function initialLoadOfHeroLinks() {
 		// console.log(key);
 		$('.js-choice-page').append(`<a onClick="handleHeroClicked(${key})" class="heroLink">
 																 	<div class="choiceContainer">
-																		<img src="${STORE[key][1]}"><h3>${STORE[key][0]}</h3>
+																		<img src="${STORE[key][1]}" alt="${STORE[key][0]}"><h2 aria-label="string">${STORE[key][0]}</h2>
 																 	</div>
 																 </a>
 																	`);

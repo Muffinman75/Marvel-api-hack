@@ -1,7 +1,7 @@
 
 * body {
 	box-sizing: border-box;
-} 
+}
 
 main {
 	background-image: url('https://i.pinimg.com/originals/ba/85/97/ba8597f4ccd93f3f523bbdf3f53a1afb.jpg');
@@ -11,7 +11,7 @@ main {
 }
 
 
-h3 {
+h2 {
 	font-family: 'Bangers', cursive;
 	font-size: 20px;
 }
@@ -44,13 +44,10 @@ main h1 {
 	color: white;
 }
 
-h2 {
-	font-family: 'Timmana', sans-serif;
-	color: lightgrey;
-}
-
 .js-bio-page h2 {
 	margin: auto;
+	font-family: 'Timmana', sans-serif;
+	color: lightgrey;
 }
 
 .choiceContainer {
@@ -65,8 +62,10 @@ h2 {
 	cursor: pointer;
 }
 
-.choiceContainer h3 {
+.choiceContainer h2 {
+	font-family: 'Bangers', cursive;
 	text-align: center;
+	color: white;
 	padding: 10px;
 	font-size: 20px
 }
