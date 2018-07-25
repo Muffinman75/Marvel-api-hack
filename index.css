@@ -1,3 +1,6 @@
+* {
+	box-sizing: border-box;
+}
 
 main {
 	background-image: url('https://i.pinimg.com/originals/ba/85/97/ba8597f4ccd93f3f523bbdf3f53a1afb.jpg');
@@ -28,6 +31,7 @@ button {
 .js-choice-page {
 	overflow: auto;
 	margin: 0 auto;
+	width: 95%;
 }
 
 .js-choice-page img {
@@ -51,9 +55,9 @@ h2 {
 
 .choiceContainer {
 	border: 5px darkred solid;
-  margin: 50px;
-	border-radius: 2px;
-	height: 400px;
+  margin-bottom: 100px;
+	border-radius: 5px;
+	height: 450px;
 	float: left;
 	width: 100%;
 	background-color: #e60000;
@@ -81,6 +85,9 @@ h2 {
 	}
 	.choiceContainer {
 		width: 37.4%;
+		margin-right: 5%;
+		margin-left: 5%;
+		/* height: 350px; */
 	}
 	.js-bio-page img {
 		width: 70%;
@@ -92,13 +99,13 @@ h2 {
 
 @media screen and (min-width: 991px) {
 	.js-choice-page {
-		max-width: 80%;
+		max-width: 90%;
 	}
 	.choiceContainer {
-		width: 20%;
-		margin-right: 20px;
-		margin-bottom: 100px;
-		margin-left: 20px;
+		width: 15%;
+		margin-right: 5%;
+		margin-left: 5%;
+		height: 350px;
 	}
 	.js-bio-page img {
 		width: 50%;
