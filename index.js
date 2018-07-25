@@ -194,12 +194,10 @@ function handleHeroClicked(key) {
 function initialLoadOfHeroLinks() {
 	Object.keys(STORE).forEach(function(key) {
 		// console.log(key);
-		$('.js-choice-page').append(`<a onClick="handleHeroClicked(${key})" class="heroLink">
-																 	<div class="choiceContainer">
-																		<img src="${STORE[key][1]}"><h3>${STORE[key][0]}</h3>
-																 	</div>
-																 </a>
-																	`);
+		$('.js-choice-page').append(`<div onClick="handleHeroClicked(${key})" class="choiceContainer heroLink">
+																	 <img src="${STORE[key][1]}"><h3>${STORE[key][0]}</h3>
+																 </div>
+																 `);
 	});
 }
 
