@@ -15,6 +15,9 @@ let searchCharacter = null;
 
 let heroIdNum = null;
 
+let vidNumber = 0;
+
+let itemNumber = 0;
 
 function getDataFromMarvelApi(heroIdNum, callback) {
 	const paramsObject = {
@@ -22,20 +25,21 @@ function getDataFromMarvelApi(heroIdNum, callback) {
     	success: callback,
     	error: function(error) {
     		console.log(error);
-    	}	
+    	}
 	};
 	$.getJSON(paramsObject);
 
 	console.log(paramsObject);
 }
-	
+
+
 function getDataFromYouTubeApi(inputText, callback) {
-	// Take the value passed from handleSubmit and use 
-	// it to find the data for the videos related to 
+	// Take the value passed from handleSubmit and use
+	// it to find the data for the videos related to
 	// the value
 	const paramsObject = {
 		url: YOUTUBE_SEARCH_URL,
-		data: { 
+		data: {
 			part: 'snippet',
 			q: inputText+'origin,history',
 		    maxResults: 4,
@@ -54,23 +58,23 @@ function getDataFromYouTubeApi(inputText, callback) {
 }
 
 function getDataFromEbay(searchItem) {
-	// Take the value passed from handleSubmit and use 
-	// it to find the data for the videos related to 
+	// Take the value passed from handleSubmit and use
+	// it to find the data for the videos related to
 	// the value
 	$('.js-shopping-page').prop('hidden', false);
 	$('.js-shopping-page').html('<img src="img/giphy.gif"/>');
 	let url = CORS + "https://svcs.ebay.com/services/search/FindingService/v1";
-    	url += "?OPERATION-NAME=findItemsByKeywords";
-    	url += "&SERVICE-VERSION=1.0.0";
-    	url += "&SECURITY-APPNAME=ManojMod-Marvelch-PRD-88bba853c-a97f3744";
-    	url += "&GLOBAL-ID=EBAY-US";
-    	url += "&RESPONSE-DATA-FORMAT=JSON";
-    	url += "&REST-PAYLOAD";
-    	url += `&keywords=${searchItem}%20figurine%20comics`;
-    	url += "&paginationInput.entriesPerPage=4";
+    url += "?OPERATION-NAME=findItemsByKeywords";
+  	url += "&SERVICE-VERSION=1.0.0";
+  	url += "&SECURITY-APPNAME=ManojMod-Marvelch-PRD-88bba853c-a97f3744";
+	 	url += "&GLOBAL-ID=EBAY-US";
+    url += "&RESPONSE-DATA-FORMAT=JSON";
+	  url += "&REST-PAYLOAD";
+    url += `&keywords=${searchItem}%20figurine%20comics`;
+    url += "&paginationInput.entriesPerPage=4";
 	// const ebayTshirtUrl = EBAY_SEARCH_URL + `keywords=${searchItem}%20tshirt&`;
 	// console.log(ebayTshirtUrl);
-	console.log(url); 
+	console.log(url);
 	console.log(`getDataFromEbay 'ran'`);
 	const paramsObject = {
 		url: url,
@@ -87,18 +91,25 @@ function getDataFromEbay(searchItem) {
 
 
 function renderHeroBio(item) {
-	// Return template string with hero/villain pic 
+	// Return template string with hero/villain pic
 	// with some biography text
 	console.log(`'renderHeroBio' ran`);
 	return`
-		<h1>Name: ${item.name}</h1>
-		<img src="${item.image}" alt="${item.name}">
-		<h2>Bio: ${item.description}</h2>`;
+		<div class="bioContainer">
+	  	<h1>Name : ${item.name}</h1>
+		  <img src="${item.image}" alt="${item.name}">
+		  <h1>history</h1>
+			<h2>${item.description}</h2>
+			<br>
+			<br>
+			<h2>If there is no history information present or you would like to
+			know more about this character, please select a video from below.</h2>
+		</div>	`;
 }
 
 function renderShoppingSearchResults(item) {
 	// Return the template string with
-	// all thumbnails and captions ready to 
+	// all thumbnails and captions ready to
 	// inject into the results page div
 	console.log(`'renderShoppingSearchResults' ran`);
 	return` 
@@ -109,12 +120,15 @@ function renderShoppingSearchResults(item) {
 
 function renderVideoSearchResults(item) {
 	// Return the template string with
-	// all thumbnails and captions ready to 
+	// all thumbnails and captions ready to
 	// inject into the results page div
 	console.log(`'renderVideoSearchResults' ran`);
+	vidNumber++;
 	return`
-		<a href="https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank"><img src=${item.snippet.thumbnails.medium.url}>Click To Learn More!</a>
-		`; 
+	<div class="vidResult ${vidNumber}">
+		<a href="https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank"><img src=${item.snippet.thumbnails.medium.url}></a>
+	</div>
+		`;
 }
 
 
@@ -122,38 +136,44 @@ function displayHeroBio(data) {
 	console.log(`'displayHeroBio' ran`);
 	let chosenHeroInfo = renderHeroBio(data);
 	$('.js-bio-page').html(chosenHeroInfo);
+	$('.js-bio-page').prepend('<button onClick="handleBackToHeroScreenClicked()" role="button" class="backToheroScreen">Choose a different Hero!</button>');
 	$('.js-choice-page').prop('hidden', true);
 	$('.js-bio-page').prop('hidden', false);
 }
 
-function displayVideoResultsPage(data) { 
-	// Inject the HTML into the results page to 
+function displayVideoResultsPage(data) {
+	// Inject the HTML into the results page to
 	// display in the DOM
 	let listOfVideos = data.items.map((item, index) => renderVideoSearchResults(item));
 	console.log(listOfVideos);
-	console.log(`'displayVideoPage' ran`); 
+	console.log(`'displayVideoPage' ran`);
 	$('.js-video-page').html(listOfVideos);
-	$('.js-video-page').append('<button onClick="handleBackToHeroScreenClicked()" role="button" class="backToheroScreen">Choose a different Hero!</button>');
 	$('.js-video-page').prop('hidden', false);
 }
 
 function displayShoppingResultsPage(data) {
 	console.log(data);
 	data = data.findItemsByKeywordsResponse[0].searchResult[0];
-	// Inject the HTML into the results page to 
+	// Inject the HTML into the results page to
 	// display in the DOM
 	let listOfShoppingImages = data.item.map((item, index) => renderShoppingSearchResults(item));
 	console.log(listOfShoppingImages);
-	console.log(`'displayShoppingPage' ran`); 
+	console.log(`'displayShoppingPage' ran`);
 	$('.js-shopping-page').html(listOfShoppingImages);
+	$('.js-shopping-page').append('<button onClick="handleBackToHeroScreenClicked()" role="button" class="backToheroScreen">Choose a different Hero!</button>');
 }
 
 function handleBackToHeroScreenClicked() {
 		console.log(`'handleBackToHeroScreenClicked' ran`)
 		$('.js-shopping-page').prop('hidden', true);
+		$('.js-shopping-title').prop('hidden', true);
 		$('.js-bio-page').prop('hidden', true);
 		$('.js-video-page').prop('hidden', true);
+		$('.js-video-title').prop('hidden', true)
+		$('.js-choice-title').prop('hidden', false);
 		$('.js-choice-page').prop('hidden', false);
+		vidNumber = 0;
+		itemNumber = 0;
 }
 
 
@@ -164,6 +184,9 @@ function handleHeroClicked(key) {
 	let heroIdNum = key;
 	console.log('heroIdNum', heroIdNum);
 	$('.js-choice-page').prop('hidden', true);
+	$('.js-video-title').prop('hidden', false);
+	$('.js-choice-title').prop('hidden', true);
+	$('.js-shopping-title').prop('hidden', false);
 	getDataFromMarvelApi(heroIdNum, displayHeroBio);
 	getDataFromYouTubeApi(searchCharacter, displayVideoResultsPage);
 	getDataFromEbay(searchCharacter);
@@ -171,8 +194,13 @@ function handleHeroClicked(key) {
 
 function initialLoadOfHeroLinks() {
 	Object.keys(STORE).forEach(function(key) {
-		console.log(key);
-		$('.js-choice-page').append(`<a onClick="handleHeroClicked(${key})" class="heroLink"><img src="${STORE[key][1]}"></a>`);
+		// console.log(key);
+		$('.js-choice-page').append(`<a onClick="handleHeroClicked(${key})" class="heroLink">
+																 	<div class="choiceContainer">
+																		<img src="${STORE[key][1]}"><h3>${STORE[key][0]}</h3>
+																 	</div>
+																 </a>
+																	`);
 	});
 }
 
@@ -182,7 +210,8 @@ function initialLoadOfHeroLinks() {
 // 		let data = $.getJSON(MARVEL_SEARCH_URL + key);
 // 		console.log(data);
 // 		STORE[key].push(data.image);
-// 	}); 
+// 	});
+
 // }
 
 
