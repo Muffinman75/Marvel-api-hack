@@ -40,7 +40,7 @@ function getDataFromYouTubeApi(inputText, callback) {
 		url: YOUTUBE_SEARCH_URL,
 		data: {
 			part: 'snippet',
-			q: inputText+'origin,history',
+			q: inputText+'origin,history,character,bio',
 		    maxResults: 4,
 			key: 'AIzaSyAw1hPcxvy1hwfZ8fTP-zOHaPzxVuqKFDI',
 			type: 'video'
@@ -125,7 +125,7 @@ function renderVideoSearchResults(item) {
 	vidNumber++;
 	return`
 	<div class="vidResult ${vidNumber}">
-		<a href="https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank"><img src=${item.snippet.thumbnails.medium.url}></a>
+		<a href="https://www.youtube.com/watch?v=${item.id.videoId}" data-lity><img src=${item.snippet.thumbnails.medium.url}></a>
 	</div>
 		`;
 }

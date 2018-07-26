@@ -68,7 +68,7 @@ const STORE = {
 	1009535 : ["Red Skull", "http://i.annihil.us/u/prod/marvel/i/mg/2/03/526036550cd37.jpg"],
 	1009537 : ["Rhino", "http://i.annihil.us/u/prod/marvel/i/mg/8/60/4c003c58f1a0c.jpg"],
 	1009546 : ["Rogue", "http://i.annihil.us/u/prod/marvel/i/mg/3/10/5112d84e2166c.jpg"],
-	1009552 : ["S.H.I.E.L.D.", "http://i.annihil.us/u/prod/marvel/i/mg/6/20/51097abb8e306.jpg"],
+	1009552 : ["Marvel S.H.I.E.L.D.", "http://i.annihil.us/u/prod/marvel/i/mg/6/20/51097abb8e306.jpg"],
 	1009554 : ["Sabretooth", "http://i.annihil.us/u/prod/marvel/i/mg/1/00/4ce1895117793.jpg"],
 	1009562 : ["Scarlet Witch", "http://i.annihil.us/u/prod/marvel/i/mg/6/70/5261a7d7c394b.jpg"],
 	1009583 : ["She-Hulk (Jennifer Walters)", "http://i.annihil.us/u/prod/marvel/i/mg/7/20/527bb5d64599e.jpg"],
