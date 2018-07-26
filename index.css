@@ -1,5 +1,5 @@
 
-* body {
+* {
 	box-sizing: border-box;
 }
 
@@ -54,14 +54,17 @@ main h1 {
 
 .choiceContainer {
 	border: 5px darkred solid;
-  margin: 50px;
 	border-radius: 2px;
-	height: 400px;
+	height: 430px;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 190px;
 	float: left;
-	width: 100%;
+	width: 93%;
 	background-color: #e60000;
 	color: white;
 	cursor: pointer;
+	display: block;
 }
 
 .choiceContainer h2 {
@@ -70,6 +73,10 @@ main h1 {
 	color: white;
 	padding: 10px;
 	font-size: 20px
+}
+
+.choiceContainer:focus {
+  outline: 3px solid lightgreen;
 }
 
 .bioContainer {
@@ -106,10 +113,10 @@ main h1 {
 		max-width: 80%;
 	}
 	.choiceContainer {
-		width: 20%;
-		margin-right: 20px;
+		width: 19%;
+		margin-right: 3%;
 		margin-bottom: 100px;
-		margin-left: 20px;
+		margin-left: 3%;
 	}
 	.js-bio-page img {
 		width: 50%;
