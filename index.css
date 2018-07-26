@@ -5,8 +5,6 @@
 
 main {
 	background-image: url('https://i.pinimg.com/originals/ba/85/97/ba8597f4ccd93f3f523bbdf3f53a1afb.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
 	padding: 10px;
 }
 
@@ -53,15 +51,15 @@ main h1 {
 	border: 5px darkred solid;
 	border-radius: 2px;
 	height: 430px;
-	margin-left: 5%;
-	margin-right: 5%;
+	margin-left: 2%;
+	margin-right: 2%;
 	margin-bottom: 190px;
 	float: left;
-	width: 93%;
+	width: 97%;
 	background-color: #e60000;
 	color: white;
 	cursor: pointer;
-	display: block;
+	/* display: block; */
 }
 
 .choiceContainer h2 {
@@ -103,8 +101,8 @@ main h1 {
 	}
 	.vidResult {
 		display: inline-block;
-		margin-left: 1%;
-		margin-right: 1%;
+		margin-left: 3%;
+		margin-right: 3%;
 	}
 }
 
@@ -114,9 +112,9 @@ main h1 {
 	}
 	.choiceContainer {
 		width: 18%;
-		margin-right: 2%;
+		/* margin-right: 2%; */
 		margin-bottom: 100px;
-		margin-left: 2%;
+		margin-left: 4%;
 		height: 400px;
 	}
 	.js-bio-page img {
