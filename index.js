@@ -32,6 +32,7 @@ function getDataFromMarvelApi(heroIdNum, callback) {
 	console.log(paramsObject);
 }
 
+
 function getDataFromYouTubeApi(inputText, callback) {
 	// Take the value passed from handleSubmit and use
 	// it to find the data for the videos related to
@@ -40,7 +41,7 @@ function getDataFromYouTubeApi(inputText, callback) {
 		url: YOUTUBE_SEARCH_URL,
 		data: {
 			part: 'snippet',
-			q: inputText+'origin,history,character,bio',
+			q: inputText+'origin,history,',
 		    maxResults: 4,
 			key: 'AIzaSyAw1hPcxvy1hwfZ8fTP-zOHaPzxVuqKFDI',
 			type: 'video'
@@ -95,13 +96,13 @@ function renderHeroBio(item) {
 	console.log(`'renderHeroBio' ran`);
 	return`
 		<div class="bioContainer">
-	  	<h1>Name : ${item.name}</h1>
+	  	<h1 aria-label="string">Name : ${item.name}</h1>
 		  <img src="${item.image}" alt="${item.name}">
-		  <h1>history</h1>
-			<h2>${item.description}</h2>
+		  <h1 aria-label="string">history</h1>
+			<h2 aria-label="string">${item.description}</h2>
 			<br>
 			<br>
-			<h2>If there is no history information present or you would like to
+			<h2 aria-label="string">If there is no history information present or you would like to
 			know more about this character, please select a video from below.</h2>
 		</div>	`;
 }
@@ -112,7 +113,7 @@ function renderShoppingSearchResults(item) {
 	// inject into the results page div
 	console.log(`'renderShoppingSearchResults' ran`);
 	return`
-		 <a href="${item.viewItemURL[0]}" target="_blank"><img src=${item.galleryURL[0]}>Click To Purchase</a>
+		<a href="${item.viewItemURL[0]}" target="_blank"><img src=${item.galleryURL[0]}>Click To Purchase</a>
 		`;
 }
 
@@ -196,7 +197,7 @@ function initialLoadOfHeroLinks() {
 		// console.log(key);
 		$('.js-choice-page').append(`<a onClick="handleHeroClicked(${key})" class="heroLink">
 																 	<div class="choiceContainer">
-																		<img src="${STORE[key][1]}"><h3>${STORE[key][0]}</h3>
+																		<img src="${STORE[key][1]}" alt="${STORE[key][0]}"><h2 aria-label="string">${STORE[key][0]}</h2>
 																 	</div>
 																 </a>
 																	`);
@@ -210,6 +211,7 @@ function initialLoadOfHeroLinks() {
 // 		console.log(data);
 // 		STORE[key].push(data.image);
 // 	});
+
 // }
 
 

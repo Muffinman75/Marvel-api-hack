@@ -1,5 +1,5 @@
 
-* body {
+* {
 	box-sizing: border-box;
 }
 
@@ -11,7 +11,7 @@ main {
 }
 
 
-h3 {
+h2 {
 	font-family: 'Bangers', cursive;
 	font-size: 20px;
 }
@@ -28,6 +28,7 @@ button {
 .js-choice-page {
 	overflow: auto;
 	margin: 0 auto;
+	width: 95%;
 }
 
 .js-choice-page img {
@@ -38,35 +39,41 @@ main h1 {
 	font-family: 'Bangers', cursive;
 	text-align: center;
 	color: white;
-}
-
-h2 {
-	font-family: 'Timmana', sans-serif;
-	color: lightgrey;
+	font-size: 45px;
 }
 
 .js-bio-page h2 {
 	margin: auto;
+	font-family: 'Timmana', sans-serif;
+	color: lightgrey;
+	font-size: 30px;
 }
 
 .choiceContainer {
 	border: 5px darkred solid;
 	border-radius: 2px;
-	height: 400px;
-	margin-left: 2%;
-	margin-right: 2%;
+	height: 430px;
+	margin-left: 5%;
+	margin-right: 5%;
 	margin-bottom: 190px;
 	float: left;
-	width: 90%;
+	width: 93%;
 	background-color: #e60000;
 	color: white;
 	cursor: pointer;
+	display: block;
 }
 
-.choiceContainer h3 {
+.choiceContainer h2 {
+	font-family: 'Bangers', cursive;
 	text-align: center;
+	color: white;
 	padding: 10px;
 	font-size: 20px
+}
+
+.choiceContainer:focus {
+  outline: 3px solid lightgreen;
 }
 
 .bioContainer {
@@ -84,9 +91,9 @@ h2 {
 	}
 	.choiceContainer {
 		width: 37.4%;
-		margin-left: 5%;
 		margin-right: 5%;
-		height: 500px;
+		margin-left: 5%;
+		/* height: 350px; */
 	}
 	.js-bio-page img {
 		width: 70%;
@@ -94,11 +101,16 @@ h2 {
 	.js-bio-page h2 {
 		width: 80%;
 	}
+	.vidResult {
+		display: inline-block;
+		margin-left: 1%;
+		margin-right: 1%;
+	}
 }
 
 @media screen and (min-width: 991px) {
 	.js-choice-page {
-		max-width: 80%;
+		max-width: 90%;
 	}
 	.choiceContainer {
 		width: 18%;
@@ -112,5 +124,10 @@ h2 {
 	}
 	.js-bio-page h2 {
 		width: 70%;
+	}
+	.vidResult {
+		display: inline-block;
+		margin-left: 1%;
+		margin-right: 1%;
 	}
 }
