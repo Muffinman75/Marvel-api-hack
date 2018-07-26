@@ -41,7 +41,7 @@ function getDataFromYouTubeApi(inputText, callback) {
 		url: YOUTUBE_SEARCH_URL,
 		data: {
 			part: 'snippet',
-			q: inputText+'origin,history',
+			q: inputText+'origin,history,',
 		    maxResults: 4,
 			key: 'AIzaSyAw1hPcxvy1hwfZ8fTP-zOHaPzxVuqKFDI',
 			type: 'video'
@@ -96,13 +96,13 @@ function renderHeroBio(item) {
 	console.log(`'renderHeroBio' ran`);
 	return`
 		<div class="bioContainer">
-	  	<h1>Name : ${item.name}</h1>
+	  	<h1 aria-label="string">Name : ${item.name}</h1>
 		  <img src="${item.image}" alt="${item.name}">
-		  <h1>history</h1>
-			<h2>${item.description}</h2>
+		  <h1 aria-label="string">history</h1>
+			<h2 aria-label="string">${item.description}</h2>
 			<br>
 			<br>
-			<h2>If there is no history information present or you would like to
+			<h2 aria-label="string">If there is no history information present or you would like to
 			know more about this character, please select a video from below.</h2>
 		</div>	`;
 }
@@ -126,7 +126,7 @@ function renderVideoSearchResults(item) {
 	vidNumber++;
 	return`
 	<div class="vidResult ${vidNumber}">
-		<a href="https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank"><img src=${item.snippet.thumbnails.medium.url}></a>
+		<a href="https://www.youtube.com/watch?v=${item.id.videoId}" data-lity><img src=${item.snippet.thumbnails.medium.url}></a>
 	</div>
 		`;
 }
@@ -195,10 +195,12 @@ function handleHeroClicked(key) {
 function initialLoadOfHeroLinks() {
 	Object.keys(STORE).forEach(function(key) {
 		// console.log(key);
-		$('.js-choice-page').append(`<div onClick="handleHeroClicked(${key})" class="choiceContainer heroLink">
-																	 <img src="${STORE[key][1]}"><h3>${STORE[key][0]}</h3>
-																 </div>
-																 `);
+		$('.js-choice-page').append(`<a onClick="handleHeroClicked(${key})" class="heroLink">
+																 	<div class="choiceContainer">
+																		<img src="${STORE[key][1]}" alt="${STORE[key][0]}"><h2 aria-label="string">${STORE[key][0]}</h2>
+																 	</div>
+																 </a>
+																	`);
 	});
 }
 
