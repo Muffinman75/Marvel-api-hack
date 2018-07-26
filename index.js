@@ -71,7 +71,7 @@ function getDataFromEbay(searchItem) {
     url += "&RESPONSE-DATA-FORMAT=JSON";
 	  url += "&REST-PAYLOAD";
     url += `&keywords=${searchItem}%20figurine%20comics`;
-    url += "&paginationInput.entriesPerPage=4";
+    url += "&paginationInput.entriesPerPage=6";
 	// const ebayTshirtUrl = EBAY_SEARCH_URL + `keywords=${searchItem}%20tshirt&`;
 	// console.log(ebayTshirtUrl);
 	console.log(url);
@@ -112,11 +112,12 @@ function renderShoppingSearchResults(item) {
 	// all thumbnails and captions ready to
 	// inject into the results page div
 	console.log(`'renderShoppingSearchResults' ran`);
-	return`
-		<div class="shoppingContainer">
-			<a href="${item.viewItemURL[0]}" target="_blank"><img src=${item.galleryURL[0]}>Click To Purchase</a>
-		</div>
-		`;
+	return`<a href="${item.viewItemURL[0]}" target="_blank">
+					 <div class="shoppingContainer">
+			       <img src=${item.galleryURL[0]} alt="${item.title[0]}">
+			       <h3>${item.title[0]}</h3>
+		       </div>
+				 </a>`;
 }
 
 
@@ -126,11 +127,12 @@ function renderVideoSearchResults(item) {
 	// inject into the results page div
 	console.log(`'renderVideoSearchResults' ran`);
 	vidNumber++;
-	return`
-	<div class="vidResult ${vidNumber}">
-		<a href="https://www.youtube.com/watch?v=${item.id.videoId}" data-lity><img src=${item.snippet.thumbnails.medium.url}></a>
-	</div>
-		`;
+	return`<a href="https://www.youtube.com/watch?v=${item.id.videoId}" data-lity>
+					 <div class="vidResult ${vidNumber}">
+		         <img src=${item.snippet.thumbnails.medium.url} class="thumbnail" alt="${item.snippet.title}">
+		         <h3 aria-label="string">${item.snippet.title}</h3>
+	         </div>
+				 </a>`;
 }
 
 
@@ -140,7 +142,7 @@ function displayHeroBio(data) {
 	console.log(`'displayHeroBio' ran`);
 	let chosenHeroInfo = renderHeroBio(data);
 	$('.js-bio-page').html(chosenHeroInfo);
-	$('.js-bio-page').prepend('<button onClick="handleBackToHeroScreenClicked()" role="button" class="backToheroScreen" aria-label="string">Choose a different Hero!</button>');
+	$('.js-bio-page').prepend('<button onClick="handleBackToHeroScreenClicked()" role="button" class="flash-button" aria-label="string">Choose a different Hero!</button>');
 	$('.js-choice-page').prop('hidden', true);
 	$('.js-bio-page').prop('hidden', false);
 }
@@ -156,22 +158,22 @@ function displayVideoResultsPage(data) {
 }
 
 function displayShoppingResultsPage(data) {
-	console.log(data);
-	data = data.findItemsByKeywordsResponse[0].searchResult[0];
 	// Inject the HTML into the results page to
-	// display in the DOM
+	// display in the DOM	
+	console.log('data', data);
+	data = data.findItemsByKeywordsResponse[0].searchResult[0];
 	let listOfShoppingImages = data.item.map((item, index) => renderShoppingSearchResults(item));
 	console.log(listOfShoppingImages);
 	console.log(`'displayShoppingPage' ran`);
 	$('.js-shopping-page').html(listOfShoppingImages);
-	$('.js-shopping-page').prepend(`<h2 aria-label="string" class="js-shopping-message">Below are items related to this character that can be purchased from Ebay. Links will open in a new tab. If there are no results please try again</h2>`)
-	$('.js-shopping-page').append('<button onClick="handleBackToHeroScreenClicked()" role="button" class="backToheroScreen" aria-label="string">Choose a different Hero!</button>');
+	$('.js-shopping-page').append('<button onClick="handleBackToHeroScreenClicked()" role="button" class="flash-button" aria-label="string">Choose a different Hero!</button>');
 }
 
 function handleBackToHeroScreenClicked() {
 	console.log(`'handleBackToHeroScreenClicked' ran`)
 	$('.js-shopping-page').prop('hidden', true);
 	$('.js-shopping-title').prop('hidden', true);
+	$('.js-shopping-message').prop('hidden', true);
 	$('.js-bio-page').prop('hidden', true);
 	$('.js-video-page').prop('hidden', true);
 	$('.js-video-title').prop('hidden', true)
@@ -192,6 +194,7 @@ function handleHeroClicked(key) {
 	$('.js-video-title').prop('hidden', false);
 	$('.js-choice-title').prop('hidden', true);
 	$('.js-shopping-title').prop('hidden', false);
+	$('.js-shopping-message').prop('hidden', false);
 	getDataFromMarvelApi(heroIdNum, displayHeroBio);
 	getDataFromYouTubeApi(searchCharacter, displayVideoResultsPage);
 	getDataFromEbay(searchCharacter);

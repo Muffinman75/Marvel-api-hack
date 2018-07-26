@@ -8,14 +8,34 @@ main {
 	padding: 10px;
 }
 
-
 h2 {
 	font-family: 'Bangers', cursive;
 	font-size: 20px;
 }
 
-button {
-	margin: 15px;
+.js-video-page {
+	margin: auto;
+	margin-bottom: 25px;
+	max-width: 95%;
+}
+
+.js-shopping-page {
+	margin: auto;
+	max-width: 95%;
+}
+
+.vidResult {
+	border: darkred 4px solid;
+	border-radius: 2px;
+	height: 260px;
+	display: block;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	background-color: rgb(0,102,0);
+}
+
+.thumbnail {
+	max-width: 100%;
 }
 
 .js-bio-page img {
@@ -48,10 +68,23 @@ main h1 {
 }
 
 .js-shopping-message {
-	text-align: center;
+	margin: auto;
 	font-family: 'Timmana', sans-serif;
 	color: lightgrey;
 	font-size: 30px;
+}
+
+.shoppingContainer {
+	display: inline-block;
+	border: 2px darkred solid;
+	height: 130px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: black;
+}
+
+.shoppingContainer img {
+	width: 100%;
 }
 
 .choiceContainer {
@@ -90,9 +123,78 @@ main h1 {
 	border-radius: 5px;
 }
 
+.js-bio-page h2, .js-shopping-page h2 {
+  background-color: rgb(51,0,0,0.8);
+  border-radius: 3px;
+}
+
+.js-video-page h3, .js-shopping-page h3 {
+	color: lightgrey;
+	font-size: 16px;
+  text-align: center;
+	font-weight: bold;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.js-video-page a, .js-shopping-page a {
+	text-decoration: none;
+}
+
 button {
 	display: block;
   margin: auto;
+	margin-top: 50px;
+	margin-bottom: 25px;
+	font-size: 20px;
+}
+
+.flash-button{
+	background: rgb(0,128,0);
+	padding: 10px 10px;
+	width: 75%;
+	height: 60px;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+
+	animation-name: flash;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+
+	//Firefox 1+
+	-webkit-animation-name: flash;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+
+	//Safari 3-4
+	-moz-animation-name: flash;
+	-moz-animation-duration: 2s;
+	-moz-animation-timing-function: linear;
+	-moz-animation-iteration-count: infinite;
+}
+
+@keyframes flash {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+//Firefox 1+
+@-webkit-keyframes flash {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+//Safari 3-4
+@-moz-keyframes flash {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
 }
 
 @media screen and (min-width: 479px) and (max-width: 991px) {
@@ -101,8 +203,8 @@ button {
 	}
 	.choiceContainer {
 		width: 37.4%;
-		margin-right: 5%;
-		margin-left: 5%;
+		margin-right: 3%;
+		margin-left: 7%;
 		/* height: 350px; */
 	}
 	.js-bio-page img {
@@ -113,12 +215,30 @@ button {
 	}
 	.vidResult {
 		display: inline-block;
-		margin-left: 3%;
+		margin-left: 7%;
 		margin-right: 3%;
+		width: 38%;
+		vertical-align: top;
+	}
+	.shoppingContainer {
+		display: inline-block;
+		margin-left: 2.5%;
+		margin-right: 2%;
+		margin-top: 30px;
+		margin-bottom: 50px;
+		width: 28%;
+		vertical-align: top;
+		height: 500px;
+	}
+	.js-shopping-message {
+		max-width: 70%;
 	}
 	button {
 		margin-top: 70px;
 		margin-bottom: 70px;
+	}
+	.flash-button {
+		width: 40%;
 	}
 }
 
@@ -128,10 +248,9 @@ button {
 	}
 	.choiceContainer {
 		width: 18%;
-		/* margin-right: 2%; */
 		margin-bottom: 100px;
 		margin-left: 4%;
-		height: 400px;
+		height: 420px;
 	}
 	.bioContainer {
 		margin-bottom: 35px;
@@ -144,19 +263,29 @@ button {
 	}
 	.vidResult {
 		display: inline-block;
-		margin-left: 1%;
+		margin-left: 3%;
 		margin-right: 1%;
 		margin-bottom: 30px;
+		width: 20%;
+		vertical-align: top;
 	}
 	.shoppingContainer {
 		display: inline-block;
-		margin-right: 8%;
+		margin-left: 3.7%;
+		margin-right: 1%;
+		width: 11%;
+		height: 400px;
+		vertical-align: top;
 	}
 	.js-shopping-message {
+		max-width: 60%;
 		margin-bottom: 35px;
 	}
 	button {
 		margin-top: 100px;
 		margin-bottom: 100px;
+	}
+	.flash-button {
+		width: 50%;
 	}
 }
