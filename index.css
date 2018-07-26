@@ -110,7 +110,7 @@ main h1 {
 	font-size: 20px
 }
 
-.choiceContainer:focus {
+.heroLink:focus {
   outline: 3px solid lightgreen;
 }
 

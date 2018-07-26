@@ -159,7 +159,7 @@ function displayVideoResultsPage(data) {
 
 function displayShoppingResultsPage(data) {
 	// Inject the HTML into the results page to
-	// display in the DOM	
+	// display in the DOM
 	console.log('data', data);
 	data = data.findItemsByKeywordsResponse[0].searchResult[0];
 	let listOfShoppingImages = data.item.map((item, index) => renderShoppingSearchResults(item));
@@ -203,7 +203,7 @@ function handleHeroClicked(key) {
 function initialLoadOfHeroLinks() {
 	Object.keys(STORE).forEach(function(key) {
 		// console.log(key);
-		$('.js-choice-page').append(`<a onClick="handleHeroClicked(${key})" class="heroLink">
+		$('.js-choice-page').append(`<a href="javascript:void(0)" onClick="handleHeroClicked(${key})" class="heroLink">
 																 	<div class="choiceContainer">
 																		<img src="${STORE[key][1]}" alt="${STORE[key][0]}"><h2 aria-label="string">${STORE[key][0]}</h2>
 																 	</div>
