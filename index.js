@@ -113,7 +113,9 @@ function renderShoppingSearchResults(item) {
 	// inject into the results page div
 	console.log(`'renderShoppingSearchResults' ran`);
 	return`
-		<a href="${item.viewItemURL[0]}" target="_blank"><img src=${item.galleryURL[0]}>Click To Purchase</a>
+		<div class="shoppingContainer">
+			<a href="${item.viewItemURL[0]}" target="_blank"><img src=${item.galleryURL[0]}>Click To Purchase</a>
+		</div>
 		`;
 }
 
@@ -133,10 +135,12 @@ function renderVideoSearchResults(item) {
 
 
 function displayHeroBio(data) {
+	// Injects the html for the bio text and adds a button
+	// at the top to navigate back to the her screen
 	console.log(`'displayHeroBio' ran`);
 	let chosenHeroInfo = renderHeroBio(data);
 	$('.js-bio-page').html(chosenHeroInfo);
-	$('.js-bio-page').prepend('<button onClick="handleBackToHeroScreenClicked()" role="button" class="backToheroScreen">Choose a different Hero!</button>');
+	$('.js-bio-page').prepend('<button onClick="handleBackToHeroScreenClicked()" role="button" class="backToheroScreen" aria-label="string">Choose a different Hero!</button>');
 	$('.js-choice-page').prop('hidden', true);
 	$('.js-bio-page').prop('hidden', false);
 }
@@ -160,20 +164,21 @@ function displayShoppingResultsPage(data) {
 	console.log(listOfShoppingImages);
 	console.log(`'displayShoppingPage' ran`);
 	$('.js-shopping-page').html(listOfShoppingImages);
-	$('.js-shopping-page').append('<button onClick="handleBackToHeroScreenClicked()" role="button" class="backToheroScreen">Choose a different Hero!</button>');
+	$('.js-shopping-page').prepend(`<h2 aria-label="string" class="js-shopping-message">Below are items related to this character that can be purchased from Ebay. Links will open in a new tab. If there are no results please try again</h2>`)
+	$('.js-shopping-page').append('<button onClick="handleBackToHeroScreenClicked()" role="button" class="backToheroScreen" aria-label="string">Choose a different Hero!</button>');
 }
 
 function handleBackToHeroScreenClicked() {
-		console.log(`'handleBackToHeroScreenClicked' ran`)
-		$('.js-shopping-page').prop('hidden', true);
-		$('.js-shopping-title').prop('hidden', true);
-		$('.js-bio-page').prop('hidden', true);
-		$('.js-video-page').prop('hidden', true);
-		$('.js-video-title').prop('hidden', true)
-		$('.js-choice-title').prop('hidden', false);
-		$('.js-choice-page').prop('hidden', false);
-		vidNumber = 0;
-		itemNumber = 0;
+	console.log(`'handleBackToHeroScreenClicked' ran`)
+	$('.js-shopping-page').prop('hidden', true);
+	$('.js-shopping-title').prop('hidden', true);
+	$('.js-bio-page').prop('hidden', true);
+	$('.js-video-page').prop('hidden', true);
+	$('.js-video-title').prop('hidden', true)
+	$('.js-choice-title').prop('hidden', false);
+	$('.js-choice-page').prop('hidden', false);
+	vidNumber = 0;
+	itemNumber = 0;
 }
 
 
@@ -209,7 +214,7 @@ function initialLoadOfHeroLinks() {
 // 	Object.keys(STORE).forEach(function(key) {
 // 		let data = $.getJSON(MARVEL_SEARCH_URL + key);
 // 		console.log(data);
-// 		STORE[key].push(data.image);
+// 		STORE[key][1].push(data.image);
 // 	});
 
 // }

@@ -47,6 +47,13 @@ main h1 {
 	font-size: 30px;
 }
 
+.js-shopping-message {
+	text-align: center;
+	font-family: 'Timmana', sans-serif;
+	color: lightgrey;
+	font-size: 30px;
+}
+
 .choiceContainer {
 	border: 5px darkred solid;
 	border-radius: 2px;
@@ -83,6 +90,11 @@ main h1 {
 	border-radius: 5px;
 }
 
+button {
+	display: block;
+  margin: auto;
+}
+
 @media screen and (min-width: 479px) and (max-width: 991px) {
   .js-choice-page {
 		max-width: 90%;
@@ -104,6 +116,10 @@ main h1 {
 		margin-left: 3%;
 		margin-right: 3%;
 	}
+	button {
+		margin-top: 70px;
+		margin-bottom: 70px;
+	}
 }
 
 @media screen and (min-width: 991px) {
@@ -117,6 +133,9 @@ main h1 {
 		margin-left: 4%;
 		height: 400px;
 	}
+	.bioContainer {
+		margin-bottom: 35px;
+	}
 	.js-bio-page img {
 		width: 50%;
 	}
@@ -127,5 +146,17 @@ main h1 {
 		display: inline-block;
 		margin-left: 1%;
 		margin-right: 1%;
+		margin-bottom: 30px;
+	}
+	.shoppingContainer {
+		display: inline-block;
+		margin-right: 8%;
+	}
+	.js-shopping-message {
+		margin-bottom: 35px;
+	}
+	button {
+		margin-top: 100px;
+		margin-bottom: 100px;
 	}
 }
