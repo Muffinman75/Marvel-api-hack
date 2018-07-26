@@ -42,12 +42,14 @@ main h1 {
 	font-family: 'Bangers', cursive;
 	text-align: center;
 	color: white;
+	font-size: 45px;
 }
 
 .js-bio-page h2 {
 	margin: auto;
 	font-family: 'Timmana', sans-serif;
 	color: lightgrey;
+	font-size: 30px;
 }
 
 .choiceContainer {
@@ -76,6 +78,7 @@ main h1 {
 
 .bioContainer img {
 	border: 7px solid darkred;
+	border-radius: 4px;
 }
 
 @media screen and (min-width: 479px) and (max-width: 991px) {
@@ -90,6 +93,11 @@ main h1 {
 	}
 	.js-bio-page h2 {
 		width: 80%;
+	}
+	.vidResult {
+		display: inline-block;
+		margin-left: 1%;
+		margin-right: 1%;
 	}
 }
 
@@ -108,5 +116,10 @@ main h1 {
 	}
 	.js-bio-page h2 {
 		width: 70%;
+	}
+	.vidResult {
+		display: inline-block;
+		margin-left: 1%;
+		margin-right: 1%;
 	}
 }
