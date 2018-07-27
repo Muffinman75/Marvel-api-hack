@@ -15,7 +15,7 @@ h2 {
 
 .js-video-page {
 	margin: auto;
-	margin-bottom: 25px;
+	margin-bottom: 40px;
 	max-width: 95%;
 }
 
@@ -27,7 +27,7 @@ h2 {
 .vidResult {
 	border: darkred 4px solid;
 	border-radius: 2px;
-	height: 260px;
+	height: 280px;
 	display: block;
 	margin-top: 30px;
 	margin-bottom: 30px;
@@ -36,6 +36,10 @@ h2 {
 
 .thumbnail {
 	max-width: 100%;
+}
+
+.bioText {
+	max-width: 97%;
 }
 
 .js-bio-page img {
@@ -68,6 +72,7 @@ main h1 {
 }
 
 .js-shopping-message {
+	max-width: 90%;
 	margin: auto;
 	font-family: 'Timmana', sans-serif;
 	color: lightgrey;
@@ -75,10 +80,15 @@ main h1 {
 }
 
 .shoppingContainer {
+	width: 38%;
 	display: inline-block;
-	border: 2px darkred solid;
-	height: 130px;
-	margin-top: 20px;
+	vertical-align: top;
+	border: 4px darkred solid;
+	border-radius: 2px;
+	height: 500px;
+	margin-left: 7%;
+	margin-right: 2%;
+	margin-top: 50px;
 	margin-bottom: 20px;
 	background-color: black;
 }
@@ -110,8 +120,10 @@ main h1 {
 	font-size: 20px
 }
 
-.heroLink:focus {
-  outline: 3px solid lightgreen;
+button:hover, button:focus {
+	transition-property: color;
+	transition-duration: 0.3s;
+	transition-timing-function: ease-in-out;
 }
 
 .bioContainer {
@@ -123,9 +135,15 @@ main h1 {
 	border-radius: 5px;
 }
 
-.js-bio-page h2, .js-shopping-page h2 {
+.js-bio-page h2, .js-shopping-page h2, .js-shopping-message, .js-choice-title,
+ .js-bio-name, .js-bio-history {
   background-color: rgb(51,0,0,0.8);
   border-radius: 3px;
+}
+
+.js-choice-title h1 {
+	margin-top: 25px;
+	margin-bottom: 30px;
 }
 
 .js-video-page h3, .js-shopping-page h3 {
@@ -158,6 +176,7 @@ button {
 	border: none;
 	border-radius: 3px;
 	cursor: pointer;
+	font-weight: bold;
 
 	animation-name: flash;
 	animation-duration: 2s;
@@ -233,9 +252,25 @@ button {
 	.js-shopping-message {
 		max-width: 70%;
 	}
+	.js-choice-title {
+		max-width: 85%;
+		margin: auto;
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	.js-bio-name {
+		max-width: 35%;
+		margin: auto;
+		margin-bottom: 30px;
+	}
+	.js-bio-history {
+		width: 28%;
+		margin: auto;
+		margin-bottom: 20px;
+	}
 	button {
-		margin-top: 70px;
-		margin-bottom: 70px;
+		margin-top: 50px;
+		margin-bottom: 30px;
 	}
 	.flash-button {
 		width: 40%;
@@ -274,16 +309,32 @@ button {
 		margin-left: 3.7%;
 		margin-right: 1%;
 		width: 11%;
-		height: 400px;
+		height: 500px;
 		vertical-align: top;
 	}
 	.js-shopping-message {
 		max-width: 60%;
 		margin-bottom: 35px;
 	}
+	.js-choice-title {
+		max-width: 60%;
+		margin: auto;
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
+	.js-bio-name {
+		max-width: 23%;
+		margin: auto;
+		margin-bottom: 35px;
+	}
+	.js-bio-history {
+		width: 18%;
+		margin: auto;
+		margin-bottom: 25px;
+	}
 	button {
-		margin-top: 100px;
-		margin-bottom: 100px;
+		margin-top: 60px;
+		margin-bottom: 50px;
 	}
 	.flash-button {
 		width: 50%;

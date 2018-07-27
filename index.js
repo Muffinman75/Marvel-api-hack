@@ -96,10 +96,10 @@ function renderHeroBio(item) {
 	console.log(`'renderHeroBio' ran`);
 	return`
 		<div class="bioContainer">
-	  	<h1 aria-label="string">Name : ${item.name}</h1>
+	  	<h1 class="js-bio-name">Name : ${item.name}</h1>
 		  <img src="${item.image}" alt="${item.name}">
-		  <h1 aria-label="string">history</h1>
-			<h2 aria-label="string">${item.description}</h2>
+		  <h1 class="js-bio-history">history</h1>
+			<h2 class="bioText">${item.description}</h2>
 			<br>
 			<br>
 			<h2 aria-label="string">If there is no history information present or you would like to
@@ -130,7 +130,7 @@ function renderVideoSearchResults(item) {
 	return`<a href="https://www.youtube.com/watch?v=${item.id.videoId}" data-lity>
 					 <div class="vidResult ${vidNumber}">
 		         <img src=${item.snippet.thumbnails.medium.url} class="thumbnail" alt="${item.snippet.title}">
-		         <h3 aria-label="string">${item.snippet.title}</h3>
+		         <h3>${item.snippet.title}</h3>
 	         </div>
 				 </a>`;
 }
@@ -142,7 +142,7 @@ function displayHeroBio(data) {
 	console.log(`'displayHeroBio' ran`);
 	let chosenHeroInfo = renderHeroBio(data);
 	$('.js-bio-page').html(chosenHeroInfo);
-	$('.js-bio-page').prepend('<button onClick="handleBackToHeroScreenClicked()" role="button" class="flash-button" aria-label="string">Choose a different Hero!</button>');
+	$('.js-bio-page').prepend('<button onClick="handleBackToHeroScreenClicked()" role="button" class="flash-button">Choose a different Hero!</button>');
 	$('.js-choice-page').prop('hidden', true);
 	$('.js-bio-page').prop('hidden', false);
 }
@@ -166,7 +166,7 @@ function displayShoppingResultsPage(data) {
 	console.log(listOfShoppingImages);
 	console.log(`'displayShoppingPage' ran`);
 	$('.js-shopping-page').html(listOfShoppingImages);
-	$('.js-shopping-page').append('<button onClick="handleBackToHeroScreenClicked()" role="button" class="flash-button" aria-label="string">Choose a different Hero!</button>');
+	$('.js-shopping-page').append('<button onClick="handleBackToHeroScreenClicked()" role="button" class="flash-button">Choose a different Hero!</button>');
 }
 
 function handleBackToHeroScreenClicked() {
@@ -203,9 +203,9 @@ function handleHeroClicked(key) {
 function initialLoadOfHeroLinks() {
 	Object.keys(STORE).forEach(function(key) {
 		// console.log(key);
-		$('.js-choice-page').append(`<a href="javascript:void(0)" onClick="handleHeroClicked(${key})" class="heroLink">
+		$('.js-choice-page').append(`<a href="#poo" onClick="handleHeroClicked(${key})" class="heroLink">
 																 	<div class="choiceContainer">
-																		<img src="${STORE[key][1]}" alt="${STORE[key][0]}"><h2 aria-label="string">${STORE[key][0]}</h2>
+																		<img src="${STORE[key][1]}" alt="${STORE[key][0]}"><h2>${STORE[key][0]}</h2>
 																 	</div>
 																 </a>
 																	`);
