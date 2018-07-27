@@ -1,8 +1,5 @@
 'use strict';
 
-// const PRIV_KEY = "513d67f9e79d2c6319e89122a9f3ab5aa73214d4";
-// const PUBLIC_KEY = "c6a0054b9fdccbf11696e79f0e7d1f74";
-
 const MARVEL_SEARCH_URL = 'https://manoj-marvel-api.herokuapp.com/api/by-id/';
 
 const EBAY_SEARCH_URL = 'https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.13.0&SECURITY-APPNAME=ManojMod-Marvelch-PRD-88bba853c-a97f3744&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD=true&paginationInput.entriesPerPage=2&';
@@ -20,6 +17,8 @@ let vidNumber = 0;
 let itemNumber = 0;
 
 function getDataFromMarvelApi(heroIdNum, callback) {
+	// Use the heroIdNum to retrieve data on the
+	// relevant character
 	const paramsObject = {
 		url: MARVEL_SEARCH_URL + heroIdNum,
     	success: callback,
@@ -46,8 +45,6 @@ function getDataFromYouTubeApi(inputText, callback) {
 			key: 'AIzaSyAw1hPcxvy1hwfZ8fTP-zOHaPzxVuqKFDI',
 			type: 'video'
 		},
-		// type: 'GET',
-		// dataType: 'json',
 		success: callback,
 		error: function(error) {
 			console.log(error);
@@ -59,8 +56,8 @@ function getDataFromYouTubeApi(inputText, callback) {
 
 function getDataFromEbay(searchItem) {
 	// Take the value passed from handleSubmit and use
-	// it to find the data for the videos related to
-	// the value
+	// it to retrieve the data for the shopping items related to
+	// the character
 	$('.js-shopping-page').prop('hidden', false);
 	$('.js-shopping-page').html('<img src="img/giphy.gif"/>');
 	let url = CORS + "https://svcs.ebay.com/services/search/FindingService/v1";
@@ -72,8 +69,6 @@ function getDataFromEbay(searchItem) {
 	  url += "&REST-PAYLOAD";
     url += `&keywords=${searchItem}%20figurine%20comics`;
     url += "&paginationInput.entriesPerPage=6";
-	// const ebayTshirtUrl = EBAY_SEARCH_URL + `keywords=${searchItem}%20tshirt&`;
-	// console.log(ebayTshirtUrl);
 	console.log(url);
 	console.log(`getDataFromEbay 'ran'`);
 	const paramsObject = {
@@ -109,7 +104,7 @@ function renderHeroBio(item) {
 
 function renderShoppingSearchResults(item) {
 	// Return the template string with
-	// all thumbnails and captions ready to
+	// all thumbnails and title ready to
 	// inject into the results page div
 	console.log(`'renderShoppingSearchResults' ran`);
 	return`<a href="${item.viewItemURL[0]}" target="_blank">
@@ -139,6 +134,8 @@ function renderVideoSearchResults(item) {
 function displayHeroBio(data) {
 	// Injects the html for the bio text and adds a button
 	// at the top to navigate back to the her screen
+	// Hides the character selection screen and reveals
+	// history page for chosen character
 	console.log(`'displayHeroBio' ran`);
 	let chosenHeroInfo = renderHeroBio(data);
 	$('.js-bio-page').html(chosenHeroInfo);
@@ -148,8 +145,8 @@ function displayHeroBio(data) {
 }
 
 function displayVideoResultsPage(data) {
-	// Inject the HTML into the results page to
-	// display in the DOM
+	// Inject the HTML into the video results page and
+	// display it in the DOM
 	let listOfVideos = data.items.map((item, index) => renderVideoSearchResults(item));
 	console.log(listOfVideos);
 	console.log(`'displayVideoPage' ran`);
@@ -158,8 +155,8 @@ function displayVideoResultsPage(data) {
 }
 
 function displayShoppingResultsPage(data) {
-	// Inject the HTML into the results page to
-	// display in the DOM
+	// Inject the HTML into the shopping item results page to
+	// display the items in the DOM
 	console.log('data', data);
 	data = data.findItemsByKeywordsResponse[0].searchResult[0];
 	let listOfShoppingImages = data.item.map((item, index) => renderShoppingSearchResults(item));
@@ -170,6 +167,8 @@ function displayShoppingResultsPage(data) {
 }
 
 function handleBackToHeroScreenClicked() {
+	// hides the whole character page and reveals the
+	// character selection screen
 	console.log(`'handleBackToHeroScreenClicked' ran`)
 	$('.js-shopping-page').prop('hidden', true);
 	$('.js-shopping-title').prop('hidden', true);
@@ -185,6 +184,9 @@ function handleBackToHeroScreenClicked() {
 
 
 function handleHeroClicked(key) {
+	// hides the character selection screen and
+	// reveals the character bio, video and
+	// shopping screens
 	console.log('button click');
 	let searchCharacter = STORE[key][0];
 	console.log('searchCharacter', searchCharacter);
@@ -201,6 +203,7 @@ function handleHeroClicked(key) {
 }
 
 function initialLoadOfHeroLinks() {
+	// loads all the characters on page load
 	Object.keys(STORE).forEach(function(key) {
 		// console.log(key);
 		$('.js-choice-page').append(`<a href="#poo" onClick="handleHeroClicked(${key})" class="heroLink">
@@ -211,18 +214,6 @@ function initialLoadOfHeroLinks() {
 																	`);
 	});
 }
-
-
-// function getImages() {
-// 	Object.keys(STORE).forEach(function(key) {
-// 		let data = $.getJSON(MARVEL_SEARCH_URL + key);
-// 		console.log(data);
-// 		STORE[key][1].push(data.image);
-// 	});
-
-// }
-
-
 
 
 function handleMarvelApp() {
