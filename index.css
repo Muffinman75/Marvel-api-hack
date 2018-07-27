@@ -106,7 +106,7 @@ main h1 {
 	margin-bottom: 190px;
 	float: left;
 	width: 97%;
-	background-color: #e60000;
+	background-color: rgb(204,0,0);
 	color: white;
 	cursor: pointer;
 	/* display: block; */
