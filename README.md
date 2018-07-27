@@ -37,4 +37,4 @@ back to the character selection screen, the button also appears at the bottom of
 providing shopping results are present.
 
 
-HTML/CSS/Jwuey/JavaScript were used in this project 
+HTML/CSS/JQuery/JavaScript were used in this project 
