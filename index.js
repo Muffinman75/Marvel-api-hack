@@ -206,7 +206,7 @@ function initialLoadOfHeroLinks() {
 	// loads all the characters on page load
 	Object.keys(STORE).forEach(function(key) {
 		// console.log(key);
-		$('.js-choice-page').append(`<a href="#poo" onClick="handleHeroClicked(${key})" class="heroLink">
+		$('.js-choice-page').append(`<a href="#marvel" onClick="handleHeroClicked(${key})" class="heroLink">
 																 	<div class="choiceContainer">
 																		<img src="${STORE[key][1]}" alt="${STORE[key][0]}"><h2>${STORE[key][0]}</h2>
 																 	</div>
