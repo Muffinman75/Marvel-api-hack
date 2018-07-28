@@ -35,3 +35,6 @@ results area pulled in from ebay to display 6 items and their titles which are a
 to the chosen character. There is a flashing green button at the top of the page which navigates
 back to the character selection screen, the button also appears at the bottom of the page 
 providing shopping results are present.
+
+
+HTML/CSS/JQuery/JavaScript were used in this project 
