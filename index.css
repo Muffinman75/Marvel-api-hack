@@ -1,342 +1,378 @@
-
-* {
-	box-sizing: border-box;
+body {
+  box-sizing: border-box;
 }
 
 main {
-	background-image: url('https://i.pinimg.com/originals/ba/85/97/ba8597f4ccd93f3f523bbdf3f53a1afb.jpg');
-	padding: 10px;
+  background-image: url("https://i.pinimg.com/originals/ba/85/97/ba8597f4ccd93f3f523bbdf3f53a1afb.jpg");
+  padding: 10px;
 }
 
 h2 {
-	font-family: 'Bangers', cursive;
-	font-size: 20px;
+  font-family: "Bangers", cursive;
+  font-size: 20px;
 }
 
 .js-video-page {
-	margin: auto;
-	margin-bottom: 40px;
-	max-width: 95%;
+  overflow: auto;
+  margin: 0 auto;
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.js-shopping-page {
-	margin: auto;
-	max-width: 95%;
+@media screen and (max-width: 375px) {
+  .js-video-page {
+    flex-direction: column;
+  }
 }
 
 .vidResult {
-	border: darkred 4px solid;
-	border-radius: 2px;
-	height: 280px;
-	display: block;
-	margin-top: 30px;
-	margin-bottom: 30px;
-	background-color: rgb(0,102,0);
+  border: darkred 4px solid;
+  border-radius: 2px;
+  margin-bottom: 30px;
+  background-color: rgb(0, 102, 0);
+}
+
+.vidLink {
+  width: 20%;
+  display: flex;
+  margin: 10px 2.5%;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 700px) {
+  .vidLink {
+    width: 40%;
+    margin: 10px 5%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .vidLink {
+    width: 90%;
+    margin: 10px 4%;
+  }
 }
 
 .thumbnail {
-	max-width: 100%;
+  width: 100%;
 }
 
 .bioText {
-	max-width: 97%;
+  max-width: 97%;
 }
 
-.js-bio-page img {
-	width: 100%;
-	margin-bottom: 25px;
+@media screen and (min-width: 376px) and (max-width: 700px) {
+  .bioText {
+    width: 70%;
+    margin: 10px 5%;
+  }
 }
 
-.js-choice-page {
-	overflow: auto;
-	margin: 0 auto;
-	width: 95%;
+@media screen and (min-width: 701px) {
+  .bioText {
+    width: 75%;
+    margin: 10px 5%;
+  }
 }
 
-.js-choice-page img {
-	width: 100%;
-}
-
-main h1 {
-	font-family: 'Bangers', cursive;
-	text-align: center;
-	color: white;
-	font-size: 45px;
-}
-
-.js-bio-page h2 {
-	margin: auto;
-	font-family: 'Timmana', sans-serif;
-	color: lightgrey;
-	font-size: 30px;
-}
-
-.js-shopping-message {
-	max-width: 90%;
-	margin: auto;
-	font-family: 'Timmana', sans-serif;
-	color: lightgrey;
-	font-size: 30px;
-}
-
-.shoppingContainer {
-	width: 38%;
-	display: inline-block;
-	vertical-align: top;
-	border: 4px darkred solid;
-	border-radius: 2px;
-	height: 500px;
-	margin-left: 7%;
-	margin-right: 2%;
-	margin-top: 50px;
-	margin-bottom: 20px;
-	background-color: black;
-}
-
-.shoppingContainer img {
-	width: 100%;
-}
-
-.choiceContainer {
-	border: 5px darkred solid;
-	border-radius: 2px;
-	height: 430px;
-	margin-left: 2%;
-	margin-right: 2%;
-	margin-bottom: 190px;
-	float: left;
-	width: 97%;
-	background-color: rgb(204,0,0);
-	color: white;
-	cursor: pointer;
-	/* display: block; */
-}
-
-.choiceContainer h2 {
-	font-family: 'Bangers', cursive;
-	text-align: center;
-	color: white;
-	padding: 10px;
-	font-size: 20px
-}
-
-button:hover, button:focus {
-	transition-property: color;
-	transition-duration: 0.3s;
-	transition-timing-function: ease-in-out;
+.js-bio-page {
+  overflow: auto;
+  margin: 0 auto;
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .bioContainer {
-	text-align: center;
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.js-bio-page img {
+  width: 90%;
+  display: flex;
+  margin: 10px 2.5%;
+}
+
+@media screen and (min-width: 376px) and (max-width: 700px) {
+  .js-bio-page img {
+    width: 70%;
+    display: flex;
+    margin: 40px 12%;
+  }
+}
+
+@media screen and (min-width: 701px) {
+  .js-bio-page img {
+    width: 50%;
+    margin: 50px 23%;
+  }
+}
+
+.js-choice-page {
+  overflow: auto;
+  margin: 0 auto;
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media screen and (max-width: 375px) {
+  .js-choice-page {
+    flex-direction: column;
+  }
+}
+
+.heroLink {
+  width: 20%;
+  display: flex;
+  margin: 10px 2.5%;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 700px) {
+  .heroLink {
+    width: 40%;
+    margin: 10px 5%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .heroLink {
+    width: 90%;
+  }
+}
+
+.choiceImageContainer {
+  width: 100%;
+}
+
+.choiceContainer img {
+  width: 100%;
+}
+
+main h1 {
+  font-family: "Bangers", cursive;
+  text-align: center;
+  color: white;
+  font-size: 45px;
+}
+
+.js-bio-page h2 {
+  margin: auto;
+  font-family: "Timmana", sans-serif;
+  color: lightgrey;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.js-bio-history {
+  text-align: center;
+}
+
+.js-shopping-message {
+  max-width: 90%;
+  margin: auto;
+  font-family: "Timmana", sans-serif;
+  color: lightgrey;
+  text-align: center;
+}
+
+.js-shopping-page {
+  overflow: auto;
+  margin: 0 auto;
+  max-width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media screen and (max-width: 375px) {
+  .js-shopping-page {
+    flex-direction: column;
+  }
+}
+
+.shoppingLink {
+  width: 31%;
+  display: flex;
+  margin: 10px 1.1%;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 700px) {
+  .shoppingLink {
+    width: 40%;
+    margin: 10px 4%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .shoppingLink {
+    width: 90%;
+    margin: 10px 5%;
+  }
+}
+
+.shoppingContainer {
+  border: 4px darkred solid;
+  border-radius: 2px;
+  margin-top: 25px;
+  background-color: black;
+}
+
+.shoppingContainer img {
+  width: 100%;
+}
+.js-choice-page {
+  overflow: auto;
+  margin: 0 auto;
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.choiceContainer {
+  border: 5px darkred solid;
+  border-radius: 2px;
+  background-color: rgb(204, 0, 0);
+  color: white;
+  cursor: pointer;
+}
+
+.choiceContainer h2 {
+  font-family: "Bangers", cursive;
+  text-align: center;
+  color: white;
+  padding: 5px;
+  font-size: 20px;
+}
+
+button:hover,
+button:focus {
+  transition-property: color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
 }
 
 .bioContainer img {
-	border: 7px solid darkred;
-	border-radius: 5px;
+  border: 7px solid darkred;
+  border-radius: 5px;
 }
 
-.js-bio-page h2, .js-shopping-page h2, .js-shopping-message, .js-choice-title,
- .js-bio-name, .js-bio-history {
-  background-color: rgb(51,0,0,0.8);
+.js-bio-page h2,
+.js-shopping-page h2,
+.js-shopping-message,
+.js-choice-title,
+.js-bio-name,
+.js-bio-history {
+  background-color: rgb(51, 0, 0, 0.8);
   border-radius: 3px;
 }
 
 .js-choice-title h1 {
-	margin-top: 25px;
-	margin-bottom: 30px;
+  margin-top: 25px;
+  margin-bottom: 30px;
 }
 
-.js-video-page h3, .js-shopping-page h3 {
-	color: lightgrey;
-	font-size: 16px;
+.js-video-page h3,
+.js-shopping-page h3 {
+  color: lightgrey;
+  font-size: 16px;
   text-align: center;
-	font-weight: bold;
-	padding-left: 10px;
-	padding-right: 10px;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-.js-video-page a, .js-shopping-page a {
-	text-decoration: none;
+.js-video-page a,
+.js-shopping-page a {
+  text-decoration: none;
 }
 
 button {
-	display: block;
+  display: block;
   margin: auto;
-	margin-top: 50px;
-	margin-bottom: 25px;
-	font-size: 20px;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  font-size: 20px;
 }
 
-.flash-button{
-	background: rgb(0,128,0);
-	padding: 10px 10px;
-	width: 75%;
-	height: 60px;
-	color: #fff;
-	border: none;
-	border-radius: 3px;
-	cursor: pointer;
-	font-weight: bold;
+.flash-button {
+  background: rgb(0, 128, 0);
+  padding: 10px 10px;
+  width: 75%;
+  height: 60px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
 
-	animation-name: flash;
-	animation-duration: 2s;
-	animation-timing-function: linear;
-	animation-iteration-count: infinite;
+  animation-name: flash;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 
-	//Firefox 1+
-	-webkit-animation-name: flash;
-	-webkit-animation-duration: 2s;
-	-webkit-animation-timing-function: linear;
-	-webkit-animation-iteration-count: infinite;
+  //Firefox 1+
+  -webkit-animation-name: flash;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
 
-	//Safari 3-4
-	-moz-animation-name: flash;
-	-moz-animation-duration: 2s;
-	-moz-animation-timing-function: linear;
-	-moz-animation-iteration-count: infinite;
+  //Safari 3-4
+  -moz-animation-name: flash;
+  -moz-animation-duration: 2s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+}
+
+.hidden {
+  display: none;
 }
 
 @keyframes flash {
-    0% { opacity: 1.0; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1.0; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 //Firefox 1+
 @-webkit-keyframes flash {
-    0% { opacity: 1.0; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1.0; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 //Safari 3-4
 @-moz-keyframes flash {
-    0% { opacity: 1.0; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1.0; }
-}
-
-@media screen and (min-width: 479px) and (max-width: 991px) {
-  .js-choice-page {
-		max-width: 90%;
-	}
-	.choiceContainer {
-		width: 37.4%;
-		margin-right: 3%;
-		margin-left: 7%;
-		/* height: 350px; */
-	}
-	.js-bio-page img {
-		width: 70%;
-	}
-	.js-bio-page h2 {
-		width: 80%;
-	}
-	.vidResult {
-		display: inline-block;
-		margin-left: 7%;
-		margin-right: 3%;
-		width: 38%;
-		vertical-align: top;
-	}
-	.shoppingContainer {
-		display: inline-block;
-		margin-left: 2.5%;
-		margin-right: 2%;
-		margin-top: 30px;
-		margin-bottom: 50px;
-		width: 28%;
-		vertical-align: top;
-		height: 500px;
-	}
-	.js-shopping-message {
-		max-width: 70%;
-	}
-	.js-choice-title {
-		max-width: 85%;
-		margin: auto;
-		margin-top: 30px;
-		margin-bottom: 30px;
-	}
-	.js-bio-name {
-		max-width: 35%;
-		margin: auto;
-		margin-bottom: 30px;
-	}
-	.js-bio-history {
-		width: 28%;
-		margin: auto;
-		margin-bottom: 20px;
-	}
-	button {
-		margin-top: 50px;
-		margin-bottom: 30px;
-	}
-	.flash-button {
-		width: 40%;
-	}
-}
-
-@media screen and (min-width: 991px) {
-	.js-choice-page {
-		max-width: 90%;
-	}
-	.choiceContainer {
-		width: 18%;
-		margin-bottom: 100px;
-		margin-left: 4%;
-		height: 420px;
-	}
-	.bioContainer {
-		margin-bottom: 35px;
-	}
-	.js-bio-page img {
-		width: 50%;
-	}
-	.js-bio-page h2 {
-		width: 70%;
-	}
-	.vidResult {
-		display: inline-block;
-		margin-left: 3%;
-		margin-right: 1%;
-		margin-bottom: 30px;
-		width: 20%;
-		vertical-align: top;
-	}
-	.shoppingContainer {
-		display: inline-block;
-		margin-left: 3.7%;
-		margin-right: 1%;
-		width: 11%;
-		height: 500px;
-		vertical-align: top;
-	}
-	.js-shopping-message {
-		max-width: 60%;
-		margin-bottom: 35px;
-	}
-	.js-choice-title {
-		max-width: 60%;
-		margin: auto;
-		margin-top: 40px;
-		margin-bottom: 40px;
-	}
-	.js-bio-name {
-		max-width: 23%;
-		margin: auto;
-		margin-bottom: 35px;
-	}
-	.js-bio-history {
-		width: 18%;
-		margin: auto;
-		margin-bottom: 25px;
-	}
-	button {
-		margin-top: 60px;
-		margin-bottom: 50px;
-	}
-	.flash-button {
-		width: 50%;
-	}
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
