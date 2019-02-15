@@ -29,8 +29,6 @@ function getDataFromMarvelApi(heroIdNum, callback) {
     }
   };
   $.getJSON(paramsObject);
-
-  console.log("Marvel params object:", paramsObject);
 }
 
 function getDataFromYouTubeApi(inputText, callback) {
@@ -49,7 +47,7 @@ function getDataFromYouTubeApi(inputText, callback) {
     },
     success: callback,
     error: function(error) {
-      console.log(error);
+      console.log("YouTube api error:", error);
     }
   };
 
@@ -60,7 +58,7 @@ function getDataFromEbay(searchItem) {
   // Take the value passed from handleSubmit and use
   // it to retrieve the data for the shopping items related to
   // the character
-  $(".js-shopping-page").prop("hidden", false);
+  $(".js-shopping-page").show();
   $(".js-shopping-page").html('<img src="img/giphy.gif"/>');
   let url = CORS + "https://svcs.ebay.com/services/search/FindingService/v1";
   url += "?OPERATION-NAME=findItemsByKeywords";
@@ -71,14 +69,13 @@ function getDataFromEbay(searchItem) {
   url += "&REST-PAYLOAD";
   url += `&keywords=${searchItem}%20figurine%20comics`;
   url += "&paginationInput.entriesPerPage=6";
-  console.log(url);
   console.log(`getDataFromEbay 'ran'`);
   const paramsObject = {
     url: url,
     data: {},
     success: displayShoppingResultsPage,
     error: function(error) {
-      console.log(error, "ebay api error");
+      console.log("Ebay api error:", error);
     }
   };
 
@@ -156,7 +153,6 @@ function displayVideoResultsPage(data) {
   let listOfVideos = data.items.map((item, index) =>
     renderVideoSearchResults(item)
   );
-  console.log(listOfVideos);
   console.log(`'displayVideoPage' ran`);
   $(".js-video-page").html(listOfVideos);
   $(".js-video-page").show();
@@ -165,12 +161,10 @@ function displayVideoResultsPage(data) {
 function displayShoppingResultsPage(data) {
   // Inject the HTML into the shopping item results page to
   // display the items in the DOM
-  console.log("data", data);
   data = data.findItemsByKeywordsResponse[0].searchResult[0];
   let listOfShoppingImages = data.item.map((item, index) =>
     renderShoppingSearchResults(item)
   );
-  console.log(listOfShoppingImages);
   console.log(`'displayShoppingPage' ran`);
   $(".js-shopping-page").html(listOfShoppingImages);
   $(".js-shopping-page").append(
@@ -193,7 +187,6 @@ function handleBackToHeroScreenClicked() {
     $(".js-choice-title").show();
     $(".js-choice-page").show();
   });
-  //$(".js-choice-page").toggleClass("hidden", false);
   vidNumber = 0;
   itemNumber = 0;
 }
@@ -222,7 +215,6 @@ function handleHeroClicked(key) {
 function initialLoadOfHeroLinks() {
   // loads all the characters on page load
   Object.keys(STORE).forEach(function(key) {
-    // console.log(key);
     $(
       ".js-choice-page"
     ).append(`<a href="#marvel" onClick="handleHeroClicked(${key})" class="heroLink">
@@ -240,7 +232,6 @@ function initialLoadOfHeroLinks() {
 
 function handleMarvelApp() {
   $(initialLoadOfHeroLinks);
-  //$(getImages);
 }
 
 $(handleMarvelApp);
