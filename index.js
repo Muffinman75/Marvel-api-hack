@@ -20,6 +20,7 @@ let itemNumber = 0;
 function getDataFromMarvelApi(heroIdNum, callback) {
   // Use the heroIdNum to retrieve data on the
   // relevant character
+  $(".js-bio-page").html('<img src="img/giphy.gif"/>');
   const paramsObject = {
     url: MARVEL_SEARCH_URL + heroIdNum,
     success: callback,
@@ -36,6 +37,7 @@ function getDataFromYouTubeApi(inputText, callback) {
   // Take the value passed from handleSubmit and use
   // it to find the data for the videos related to
   // the value
+  $(".js-video-page").html('<img src="img/giphy.gif"/>');
   const paramsObject = {
     url: YOUTUBE_SEARCH_URL,
     data: {
