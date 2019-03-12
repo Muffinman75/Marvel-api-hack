@@ -69,7 +69,6 @@ function getDataFromEbay(searchItem) {
   url += "&REST-PAYLOAD";
   url += `&keywords=${searchItem}%20figurine%20comics`;
   url += "&paginationInput.entriesPerPage=6";
-  console.log(`getDataFromEbay 'ran'`);
   const paramsObject = {
     url: url,
     data: {},
@@ -85,7 +84,6 @@ function getDataFromEbay(searchItem) {
 function renderHeroBio(item) {
   // Return template string with hero/villain pic
   // with some biography text
-  console.log(`'renderHeroBio' ran`);
   return `
 		<div class="bioContainer">
 	  	<h1 class="js-bio-name">Name : ${item.name}</h1>
@@ -103,7 +101,6 @@ function renderShoppingSearchResults(item) {
   // Return the template string with
   // all thumbnails and title ready to
   // inject into the results page div
-  console.log(`'renderShoppingSearchResults' ran`);
   return `<a class="shoppingLink" href="${item.viewItemURL[0]}" target="_blank">
 					 <div class="shoppingContainer">
 			       <img class="shoppingImage" src=${item.galleryURL[0]} alt="${
@@ -118,7 +115,6 @@ function renderVideoSearchResults(item) {
   // Return the template string with
   // all thumbnails and captions ready to
   // inject into the results page div
-  console.log(`'renderVideoSearchResults' ran`);
   vidNumber++;
   return `<a class="vidLink" href="https://www.youtube.com/watch?v=${
     item.id.videoId
@@ -137,7 +133,6 @@ function displayHeroBio(data) {
   // at the top to navigate back to the hero screen
   // Hides the character selection screen and reveals
   // history page for chosen character
-  console.log(`'displayHeroBio' ran`);
   let chosenHeroInfo = renderHeroBio(data);
   $(".js-bio-page").html(chosenHeroInfo);
   $(".js-bio-page").prepend(
@@ -153,7 +148,6 @@ function displayVideoResultsPage(data) {
   let listOfVideos = data.items.map((item, index) =>
     renderVideoSearchResults(item)
   );
-  console.log(`'displayVideoPage' ran`);
   $(".js-video-page").html(listOfVideos);
   $(".js-video-page").show();
 }
@@ -165,7 +159,6 @@ function displayShoppingResultsPage(data) {
   let listOfShoppingImages = data.item.map((item, index) =>
     renderShoppingSearchResults(item)
   );
-  console.log(`'displayShoppingPage' ran`);
   $(".js-shopping-page").html(listOfShoppingImages);
   $(".js-shopping-page").append(
     '<button onClick="handleBackToHeroScreenClicked()" role="button" class="flash-button">Choose a different Hero!</button>'
@@ -176,7 +169,6 @@ function displayShoppingResultsPage(data) {
 function handleBackToHeroScreenClicked() {
   // hides the whole character page and reveals the
   // character selection screen
-  console.log(`'handleBackToHeroScreenClicked' ran`);
   $(document).ready(function() {
     $(".js-shopping-page").hide();
     $(".js-shopping-title").hide();
@@ -195,11 +187,8 @@ function handleHeroClicked(key) {
   // hides the character selection screen and
   // reveals the character bio, video and
   // shopping screens
-  console.log("Hero button clicked");
   let searchCharacter = STORE[key][0];
-  console.log("searchCharacter", searchCharacter);
   let heroIdNum = key;
-  console.log("heroIdNum", heroIdNum);
   getDataFromMarvelApi(heroIdNum, displayHeroBio);
   getDataFromYouTubeApi(searchCharacter, displayVideoResultsPage);
   getDataFromEbay(searchCharacter);
